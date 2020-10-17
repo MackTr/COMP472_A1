@@ -1,8 +1,7 @@
 import numpy as np
 from helper import *
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import ParameterGrid
 from sklearn import metrics
 
 i1 = 'C:/COMP472_A1/Assig1-Dataset/Assig1-Dataset/info_1.csv'
@@ -24,47 +23,30 @@ features_train = []
 labels_test = []
 features_test = []
 
-labels_validate = []
-features_validate = []
-
 data_train = np.loadtxt(t1, delimiter=",", skiprows=0)
 data_test = np.loadtxt(tw1, delimiter=",", skiprows=0)
-data_validate = np.loadtxt(v1, delimiter=",", skiprows=0)
 
 labels_train, features_train = get_labels_features(data_train)
 labels_test, features_test = get_labels_features(data_test)
-labels_validate, features_validate = get_labels_features(data_validate)
 
 param_grid = {
-    'criterion': ['gini', 'entropy'],
-    'max_depth': [10, None],
-    'min_samples_split': [0.00000000000001, 0.00000001, 0.0001, 0.1],
-    'min_impurity_decrease': [0.00000000000001, 0.00000001, 0.0001, 0.1],
-    'class_weight': [None, 'balanced']
+    'activation': ['identity', 'logistic', 'tanh', 'relu'],
+    'hidden_layer_sizes': [(30, 50), (20, 20, 20), (10, 20, 30)],
+    'solver': ['adam', 'sgd']
 }
 
-
-model = DecisionTreeClassifier()
-
+model = MLPClassifier()
 
 model_optimized = GridSearchCV(model, param_grid)
 model_optimized.fit(features_train, labels_train)
 
-
-test_predictions = model_optimized.predict(features_validate)
-print(metrics.accuracy_score(test_predictions, labels_validate))
-print(model_optimized.best_params_)
-
 test_predictions = model_optimized.predict(features_test)
 print(model_optimized.best_params_)
+
 # for number in range(len(test_predictions)):
 #     if test_predictions[number] == labels_test[number]:
 #         print('woohoo')
-#         print(labels_test[number])
-#         print(test_predictions[number])
 #     else:
 #         print('fck')
-#         print(labels_test[number])
-#         print(test_predictions[number])
 
 print(metrics.accuracy_score(test_predictions, labels_test))
