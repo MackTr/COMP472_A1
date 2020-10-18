@@ -35,18 +35,36 @@ labels_train, features_train = get_labels_features(data_train)
 labels_test, features_test = get_labels_features(data_test)
 labels_validate, features_validate = get_labels_features(data_validate)
 
+param_grid = {
+    'criterion': ['gini', 'entropy'],
+    'max_depth': [10, None],
+    'min_samples_split': [0.00000000000001, 0.00000001, 0.0001, 0.1],
+    'min_impurity_decrease': [0.00000000000001, 0.00000001, 0.0001, 0.1],
+    'class_weight': [None, 'balanced']
+}
 
 
+model = DecisionTreeClassifier()
 
-model = DecisionTreeClassifier(criterion='entropy')
-model.fit(features_train, labels_train)
 
-test_predictions = model.predict(features_test)
+model_optimized = GridSearchCV(model, param_grid)
+model_optimized.fit(features_train, labels_train)
 
-for number in range(len(test_predictions)):
-    if test_predictions[number] == labels_test[number]:
-        print('woohoo')
-    else:
-        print('fck')
+
+test_predictions = model_optimized.predict(features_validate)
+print(metrics.accuracy_score(test_predictions, labels_validate))
+print(model_optimized.best_params_)
+
+test_predictions = model_optimized.predict(features_test)
+print(model_optimized.best_params_)
+# for number in range(len(test_predictions)):
+#     if test_predictions[number] == labels_test[number]:
+#         print('woohoo')
+#         print(labels_test[number])
+#         print(test_predictions[number])
+#     else:
+#         print('fck')
+#         print(labels_test[number])
+#         print(test_predictions[number])
 
 print(metrics.accuracy_score(test_predictions, labels_test))
