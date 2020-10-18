@@ -2,14 +2,17 @@ import csv
 import matplotlib.pyplot as plt
 import collections
 
-i1 = "Assig1-Dataset/Assig1-Dataset/info_1.csv"
-i2 = "Assig1-Dataset/Assig1-Dataset/info_2.csv"
-tn1 = "Assig1-Dataset/Assig1-Dataset/test_no_label_1.csv"
-tw1 = "Assig1-Dataset/Assig1-Dataset/test_with_label_1.csv"
-tw2 = "Assig1-Dataset/Assig1-Dataset/test_with_label_2.csv"
-t1 = "Assig1-Dataset/Assig1-Dataset/train_1.csv"
-v1 = "Assig1-Dataset/Assig1-Dataset/val_1.csv"
+i1 = 'Assig1-Dataset/Assig1-Dataset/info_1.csv'
+tn1 = 'Assig1-Dataset/Assig1-Dataset/test_no_label_1.csv'
+tw1 = 'Assig1-Dataset/Assig1-Dataset/test_with_label_1.csv'
+t1 = 'Assig1-Dataset/Assig1-Dataset/train_1.csv'
+v1 = 'Assig1-Dataset/Assig1-Dataset/val_1.csv'
 
+i2 = 'Assig1-Dataset/Assig1-Dataset/info_2.csv'
+tn2 = 'Assig1-Dataset/Assig1-Dataset/test_no_label_2.csv'
+tw2 = 'Assig1-Dataset/Assig1-Dataset/test_with_label_2.csv'
+t2 = 'Assig1-Dataset/Assig1-Dataset/train_2.csv'
+v2 = 'Assig1-Dataset/Assig1-Dataset/val_2.csv'
 
 
 def getDistribution(filePath):
@@ -33,7 +36,7 @@ def indexToLetter(distribution_list, indexFile):
     return distribution_list
 
 
-data = collections.Counter(indexToLetter(getDistribution(t1), i1))
+data = collections.Counter(indexToLetter(getDistribution(t2), i2))
 
 plt.bar(data.keys(), data.values())
 plt.xlabel('Letters')
