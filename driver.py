@@ -10,22 +10,22 @@ from models.mlp_better import *
 import numpy as np
 
 # load datasets from csv files
-labels_train = []
+labels_train = []        #creation of arrays for training data
 features_train = []
 
-labels_test = []
+labels_test = []         #creation of array for test data
 features_test = []
 
-labels_validation = []
+labels_validation = []   #creation of array for validation data
 features_validation = []
 
-labels_train, features_train = get_labels_features_from_dataset(train_dataset_path)
+labels_train, features_train = get_labels_features_from_dataset(train_dataset_path)              #the data is then taken from the determined files in global_variables.py
 labels_test, features_test = get_labels_features_from_dataset(test_with_label_path)
 labels_validation, features_validation = get_labels_features_from_dataset(validation_dataset_path)
 
 dataset = {
     'labels_train': labels_train,
-    'features_train': features_train,
+    'features_train': features_train,              #then made into a dataset to make the execution of the models easier
     'labels_test': labels_test,
     'features_test': features_test,
     'labels_validation': labels_validation,
