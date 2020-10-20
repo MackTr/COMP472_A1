@@ -9,13 +9,14 @@ from sklearn.model_selection import GridSearchCV
 
 from sklearn import metrics
 
+# type of models
 class Model(Enum):
     GNB = 1
     DT = 2
     PER = 3
     MLP = 4
 
-
+# create a model according to the given parameter
 def create_model(model_type):
     if model_type == Model.GNB:
         return GaussianNB()
@@ -29,9 +30,10 @@ def create_model(model_type):
         return None
 
 
+# applying the given param_grid to the model using GridSearch
 def apply_grid_search_on(model, param_grid):
     return GridSearchCV(model, param_grid)
 
-
+# returns accuracy score of a test
 def get_accuracy_score(test_predictions, right_labels):
     return metrics.accuracy_score(test_predictions, right_labels)

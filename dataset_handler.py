@@ -1,11 +1,11 @@
 import numpy as np
 from global_variables import *
 
-
+# read csv file containing dataset
 def get_dataset(dataset_path):
     return np.loadtxt(dataset_path, delimiter=",", skiprows=0)
 
-
+# fetch labels and features in the dataset file
 def get_labels_features_from_dataset(dataset_path):
     labels = []
     features = []
