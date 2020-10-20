@@ -15,6 +15,7 @@ def run_best_multi_layered_perceptron(dataset):
 
     # train model with training dataset print the best_params
     best_mlp_model.fit(dataset['features_train'], dataset['labels_train'])
+    print('This is the best parameters after training ')
     print(best_mlp_model.best_params_)
 
     # train model with validation dataset and print the best_params

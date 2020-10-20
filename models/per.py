@@ -6,7 +6,6 @@ from model_handler import *
 
 def run_perceptron(dataset):
     per_model = create_model(Model.PER)
-    per_model.set_params(criterion='entropy')
 
     # train the model
     per_model.fit(dataset['features_train'], dataset['labels_train'])
