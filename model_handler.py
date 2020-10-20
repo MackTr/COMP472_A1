@@ -34,4 +34,4 @@ def apply_grid_search_on(model, param_grid):
 
 
 def get_accuracy_score(test_predictions, right_labels):
-    return ""
+    return metrics.accuracy_score(test_predictions, right_labels)
