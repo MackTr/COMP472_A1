@@ -5,13 +5,19 @@ from model_handler import *
 # we will use the train and validation dataset for the training
 
 def run_multi_layer_perceptron(dataset):
+    print()
+    print("------ Start: MLP ------")
     mlp_model = create_model(Model.MLP)
+    mlp_model.set_params(hidden_layer_sizes=100, activation='logistic', solver='sgd')
 
     # train the model
     mlp_model.fit(dataset['features_train'], dataset['labels_train'])
     mlp_model.fit(dataset['features_validation'], dataset['labels_validation'])
 
+    # test the model
     test_predictions_mlp = mlp_model.predict(dataset['features_test'])
 
+    # verify accuracy of the model
     print('MLP accuracy: ')
     print(get_accuracy_score(test_predictions_mlp, dataset['labels_test']))
+    print("------ End: MLP ------")

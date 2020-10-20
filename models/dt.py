@@ -5,6 +5,8 @@ from model_handler import *
 # we will use the train and validation datasets for the training
 
 def run_decision_tree(dataset):
+    print()
+    print("------ Start: DT ------")
     dt_model = create_model(Model.DT)
     dt_model.set_params(criterion='entropy')
 
@@ -12,7 +14,10 @@ def run_decision_tree(dataset):
     dt_model.fit(dataset['features_train'], dataset['labels_train'])
     dt_model.fit(dataset['features_validation'], dataset['labels_validation'])
 
+    # test the model
     test_predictions_dt = dt_model.predict(dataset['features_test'])
 
-    print('DT accuracy: ')
+    # verify accuracy of the model
+    print('accuracy: ')
     print(get_accuracy_score(test_predictions_dt, dataset['labels_test']))
+    print("------ End: DT ------")
