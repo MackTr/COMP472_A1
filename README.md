@@ -1,7 +1,9 @@
 # COMP472_A1
 ## Team Try Hard
+Repo: https://github.com/MackTr/COMP472_A1  
+
 Mackenzie Trenholm - 40057679  
-Alessandro Sartor - 40042866
+Alessandro Sartor - 40042866  
 ## Install dependencies
   You need to install:  
   Numpy -> pip install numpy  
