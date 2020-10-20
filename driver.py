@@ -7,6 +7,7 @@ from models.dt_best import *
 from models.per import *
 from models.mlp import *
 from models.mlp_better import *
+import numpy as np
 
 # load datasets from csv files
 labels_train = []
@@ -31,9 +32,9 @@ dataset = {
     'features_validation': features_validation,
 }
 
-run_gaussian_naive_bayes(dataset)
-run_decision_tree(dataset)
+#run_gaussian_naive_bayes(dataset)
+#run_decision_tree(dataset)
 run_best_decision_tree(dataset)
-run_perceptron(dataset)
-run_multi_layer_perceptron(dataset)
+#run_perceptron(dataset)
+#run_multi_layer_perceptron(dataset)
 run_best_multi_layered_perceptron(dataset)

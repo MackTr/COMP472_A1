@@ -36,7 +36,7 @@ def indexToLetter(distribution_list, indexFile):
     return distribution_list
 
 
-data = collections.Counter(indexToLetter(getDistribution(t2), i2))
+data = collections.Counter(indexToLetter(getDistribution(v2), i2))
 
 plt.bar(data.keys(), data.values())
 plt.xlabel('Letters')
