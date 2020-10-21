@@ -34,7 +34,7 @@ dataset = {
 
 #run_gaussian_naive_bayes(dataset)
 #run_decision_tree(dataset)
-run_best_decision_tree(dataset)
+run_best_decision_tree(dataset)               #The models that are not desired to be run can be commented out
 #run_perceptron(dataset)
 #run_multi_layer_perceptron(dataset)
 run_best_multi_layered_perceptron(dataset)

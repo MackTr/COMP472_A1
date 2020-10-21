@@ -24,21 +24,21 @@ def getDistribution(filePath):
             distribution_list.append(row[1024])
             row_count+=1
             distribution_list = list(map(int, distribution_list))
-        return distribution_list
+        return distribution_list  #return list with last parameter of files with labels. The list will then be of all the labels in order
 
 def indexToLetter(distribution_list, indexFile):
     with open(indexFile) as csv_file:
-        index = csv.reader(csv_file, delimiter=',')
+        index = csv.reader(csv_file, delimiter=',') #we then read the index file to transform the label from its code to letter ex.: 0 -> A
         rows = list(index)
         distribution_list.sort()   #sort to make easier to visualize
         for i in range(len(distribution_list)):
-            distribution_list[i] = rows[distribution_list[i]+1][1]
+            distribution_list[i] = rows[distribution_list[i]+1][1]   #here the item in the list is changed to its letter counterpart
     return distribution_list
 
 
-data = collections.Counter(indexToLetter(getDistribution(v2), i2))
-
-plt.bar(data.keys(), data.values())
+data = collections.Counter(indexToLetter(getDistribution(v2), i2))   # The dataset is then created with the list and its occurence.
+                                                                     # instead of ex.: A, A, A -> A:3
+plt.bar(data.keys(), data.values()) #the data is then plotted here, data.keys() is the letter, and data.values() is the occurence.
 plt.xlabel('Letters')
 plt.ylabel('Occurence')
 plt.title('Letters by Occurence')
